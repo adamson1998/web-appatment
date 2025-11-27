@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goba Peaks - Premium Residential Living | By Whistling Woods</title>
+    <meta name="description" content="Experience elevated living at Goba Peaks - premium residential apartments in Dar es Salaam. Where ambition meets luxury in contemporary urban design.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/goba-peaks-logo-secondary.png" alt="Goba Peaks Logo" class="logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#apartments" class="nav-link">Apartments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="location.html" class="nav-link">Location</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="booking.html" class="nav-link cta-button">Book Now</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <img src="images/background-image.jpeg" alt="Goba Peaks Luxury Villa with Pool" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="images/goba-peaks-logo-primary.jpeg" alt="Goba Peaks" class="hero-logo-img">
+            </div>
+            
+            <div class="hero-text">
+                <h1 class="hero-title">Elevated Living, Redefined</h1>
+                <p class="hero-subtitle">
+                    Experience unmatched luxury and sophistication in our premium residential apartments. 
+                    Your exclusive sanctuary in the heart of Dar es Salaam, Tanzania.
+                </p>
+            </div>
+            
+            <div class="hero-location">
+                <span class="location-text">Dar es Salaam, Tanzania</span>
+                <div class="hero-actions">
+                    <a href="#apartments" class="btn btn-primary">Explore Apartments</a>
+                    <a href="#contact" class="btn btn-secondary">Schedule Visit</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-features">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <img src="images/icons/luxury-icon.svg" alt="Luxury">
+                </div>
+                <span class="feature-text">Premium<br>Living</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <img src="images/icons/modern-icon.svg" alt="Modern">
+                </div>
+                <span class="feature-text">Contemporary<br>Design</span>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <img src="images/icons/elevated-icon.svg" alt="Elevated">
+                </div>
+                <span class="feature-text">Elevated<br>Experience</span>
+            </div>
+        </div>
+
+        <!-- Inquiry Form -->
+        <div class="hero-inquiry">
+            <div class="inquiry-form">
+                <h3>Find Your Perfect Home</h3>
+                <form class="quick-inquiry">
+                    <div class="form-group">
+                        <label for="apartment-type">Apartment Type</label>
+                        <select id="apartment-type" name="apartment-type">
+                            <option value="">Select Type</option>
+                            <option value="studio">Studio</option>
+                            <option value="1-bedroom">1 Bedroom</option>
+                            <option value="2-bedroom">2 Bedroom</option>
+                            <option value="3-bedroom">3 Bedroom</option>
+                            <option value="penthouse">Penthouse</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="move-in">Preferred Move-in</label>
+                        <input type="date" id="move-in" name="move-in">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search Apartments</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Discover Elevated Living</h2>
+                <p class="section-subtitle">
+                    From luxurious residences to world-class amenities, every detail has been 
+                    crafted for contemporary urban living at its finest
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-item">
+                    <div class="about-icon">
+                        <img src="images/icons/apartments-icon.svg" alt="Premium Apartments">
+                    </div>
+                    <h3>Premium Apartments</h3>
+                    <p>Discover our thoughtfully designed living spaces with modern finishes and panoramic city views</p>
+                    <a href="#apartments" class="learn-more">Learn More →</a>
+                </div>
+
+                <div class="about-item">
+                    <div class="about-icon">
+                        <img src="images/icons/amenities-icon.svg" alt="World-class Amenities">
+                    </div>
+                    <h3>World-class Amenities</h3>
+                    <p>Experience exceptional facilities including fitness center, rooftop pool, and community spaces</p>
+                    <a href="#amenities" class="learn-more">Learn More →</a>
+                </div>
+
+                <div class="about-item">
+                    <div class="about-icon">
+                        <img src="images/icons/lifestyle-icon.svg" alt="Lifestyle Services">
+                    </div>
+                    <h3>Lifestyle Services</h3>
+                    <p>Enjoy concierge services, property management, and exclusive resident events</p>
+                    <a href="#contact" class="learn-more">Learn More →</a>
+                </div>
+
+                <div class="about-item">
+                    <div class="about-icon">
+                        <img src="images/icons/location-icon.svg" alt="Prime Location">
+                    </div>
+                    <h3>Prime Location</h3>
+                    <p>Strategically located in the heart of Dar es Salaam with easy access to business and entertainment districts</p>
+                    <a href="#location" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apartments Section -->
+    <section id="apartments" class="apartments-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Where Dreams Meet Reality</h2>
+                <p class="section-subtitle">
+                    Choose from our collection of premium apartment homes, each designed to provide 
+                    an elevated living experience
+                </p>
+            </div>
+
+            <div class="apartments-showcase">
+                <!-- Penthouse -->
+                <div class="apartment-feature">
+                    <div class="apartment-content">
+                        <div class="apartment-badge">Signature Collection</div>
+                        <h3>Penthouse Suites</h3>
+                        <p>Experience the pinnacle of luxury living with our exclusive penthouse suites featuring private terraces and breathtaking city views</p>
+                        <div class="apartment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">180-250 sqm</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bedrooms:</span>
+                                <span class="detail-value">3-4 bedrooms</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Features:</span>
+                                <span class="detail-value">Private terrace, City views</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">Explore Penthouse</a>
+                    </div>
+                    <div class="apartment-image">
+                        <img src="images/apartments/penthouse-living.jpg" alt="Penthouse Living Room">
+                        <div class="image-badge">Premium Living</div>
+                    </div>
+                </div>
+
+                <!-- 3 Bedroom -->
+                <div class="apartment-feature reverse">
+                    <div class="apartment-content">
+                        <div class="apartment-badge">Family Collection</div>
+                        <h3>3-Bedroom Apartments</h3>
+                        <p>Spacious family homes with open-plan living areas, premium finishes, and thoughtful layouts designed for modern family life</p>
+                        <div class="apartment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">120-150 sqm</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bedrooms:</span>
+                                <span class="detail-value">3 bedrooms, 2 baths</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Features:</span>
+                                <span class="detail-value">Balcony, Storage room</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">Explore 3-Bedroom</a>
+                    </div>
+                    <div class="apartment-image">
+                        <img src="images/apartments/family-apartment.jpg" alt="3-Bedroom Apartment">
+                        <div class="image-badge">Family Living</div>
+                    </div>
+                </div>
+
+                <!-- Studio/1 Bedroom -->
+                <div class="apartment-feature">
+                    <div class="apartment-content">
+                        <div class="apartment-badge">Urban Collection</div>
+                        <h3>Studio & 1-Bedroom</h3>
+                        <p>Perfect for young professionals and couples, these efficient layouts maximize space while maintaining luxury and comfort</p>
+                        <div class="apartment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">45-80 sqm</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Layout:</span>
+                                <span class="detail-value">Studio to 1 bedroom</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Features:</span>
+                                <span class="detail-value">Modern kitchen, Smart storage</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">Explore Urban Collection</a>
+                    </div>
+                    <div class="apartment-image">
+                        <img src="images/apartments/urban-studio.jpg" alt="Studio Apartment">
+                        <div class="image-badge">Urban Living</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Services -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="section-title">Premium Services</h2>
+                <h3 class="services-subtitle">Tailored to Perfection</h3>
+                <p class="services-description">
+                    Every service at Goba Peaks is meticulously crafted to exceed your expectations. 
+                    From personalized resident services to 24/7 property management, we ensure your 
+                    living experience is nothing short of extraordinary.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="images/icons/concierge-icon.svg" alt="Concierge">
+                    </div>
+                    <h4>Concierge Service</h4>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="images/icons/maintenance-icon.svg" alt="Maintenance">
+                    </div>
+                    <h4>Property Management</h4>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="images/icons/security-icon.svg" alt="Security">
+                    </div>
+                    <h4>24/7 Security</h4>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="images/icons/parking-icon.svg" alt="Parking">
+                    </div>
+                    <h4>Covered Parking</h4>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <a href="#contact" class="btn btn-primary">Learn About Services</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Premium Units</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">World-class Amenities</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Concierge Service</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5★</div>
+                    <div class="stat-label">Luxury Living</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <div class="gallery-tabs">
+                    <button class="gallery-tab active" data-category="all">Explore All Spaces (12)</button>
+                    <button class="gallery-tab" data-category="living">Living Areas</button>
+                    <button class="gallery-tab" data-category="bedrooms">Bedrooms</button>
+                    <button class="gallery-tab" data-category="kitchen">Kitchens</button>
+                    <button class="gallery-tab" data-category="amenities">Amenities</button>
+                </div>
+            </div>
+
+            <div class="gallery-featured">
+                <div class="gallery-main">
+                    <h3>Contemporary Living</h3>
+                    <p>
+                        Experience the epitome of modern luxury in our thoughtfully designed living spaces. 
+                        Each area features premium furnishings, designer lighting, and carefully curated 
+                        finishes that create an atmosphere of refined elegance. Floor-to-ceiling windows 
+                        flood the space with natural light, while open layouts invite sophisticated 
+                        entertaining and daily living.
+                    </p>
+                    <a href="#contact" class="btn btn-secondary">More Info</a>
+                </div>
+                <div class="gallery-images">
+                    <img src="images/gallery/modern-living-main.jpg" alt="Modern living room with contemporary design" class="gallery-main-image">
+                    <img src="images/gallery/luxury-living-alt.jpg" alt="Luxury living area with designer lighting" class="gallery-alt-image">
+                </div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="living">
+                    <img src="images/gallery/living-1.jpg" alt="Living Area 1">
+                    <div class="gallery-overlay">
+                        <h4>Open Living Space</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="bedrooms">
+                    <img src="images/gallery/bedroom-1.jpg" alt="Master Bedroom">
+                    <div class="gallery-overlay">
+                        <h4>Master Suite</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="kitchen">
+                    <img src="images/gallery/kitchen-1.jpg" alt="Modern Kitchen">
+                    <div class="gallery-overlay">
+                        <h4>Designer Kitchen</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="amenities">
+                    <img src="images/gallery/pool-1.jpg" alt="Rooftop Pool">
+                    <div class="gallery-overlay">
+                        <h4>Rooftop Pool</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="amenities">
+                    <img src="images/gallery/gym-1.jpg" alt="Fitness Center">
+                    <div class="gallery-overlay">
+                        <h4>Fitness Center</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="living">
+                    <img src="images/gallery/balcony-1.jpg" alt="Private Balcony">
+                    <div class="gallery-overlay">
+                        <h4>Private Terrace</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-cta">
+                <h3>Visit Goba Peaks</h3>
+                <div class="cta-buttons">
+                    <a href="#apartments" class="btn btn-primary">Explore Apartments</a>
+                    <a href="#contact" class="btn btn-secondary">Schedule Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-text">
+                    <h2>Our Location</h2>
+                    <p>
+                        Strategically positioned in the heart of Dar es Salaam, Goba Peaks offers 
+                        unparalleled access to the city's business districts, shopping centers, 
+                        educational institutions, and cultural attractions. Experience urban 
+                        convenience at its finest.
+                    </p>
+                    <div class="location-features">
+                        <div class="location-feature">
+                            <strong>5 minutes</strong> to CBD
+                        </div>
+                        <div class="location-feature">
+                            <strong>10 minutes</strong> to Airport
+                        </div>
+                        <div class="location-feature">
+                            <strong>Walking distance</strong> to Shopping
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <!-- Map will be embedded here -->
+                    <div class="map-placeholder">
+                        <img src="images/map-preview.jpg" alt="Goba Peaks Location Map">
+                        <div class="map-overlay">
+                            <button class="btn btn-primary">View Interactive Map</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">
+                    Experience the pinnacle of residential luxury. Contact us to schedule a visit 
+                    or learn more about our available apartments.
+                </p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="images/icons/phone-icon.svg" alt="Phone">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+255 XXX XXX XXX</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="images/icons/email-icon.svg" alt="Email">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>gobaseaks@whistlingwoods.co.tz</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="images/icons/location-icon.svg" alt="Location">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Premium District, Dar es Salaam</p>
+                        </div>
+                    </div>
+
+                    <div class="ready-section">
+                        <h4>Ready to Experience Elevated Living?</h4>
+                        <p>
+                            Schedule a visit today and discover what makes Goba Peaks Tanzania's 
+                            premier residential destination
+                        </p>
+                        <div class="ready-buttons">
+                            <a href="#" class="btn btn-primary">Schedule Visit</a>
+                            <a href="#" class="btn btn-secondary">Download Brochure</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form class="inquiry-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Interested In</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select your interest</option>
+                                <option value="studio">Studio Apartment</option>
+                                <option value="1-bedroom">1-Bedroom Apartment</option>
+                                <option value="2-bedroom">2-Bedroom Apartment</option>
+                                <option value="3-bedroom">3-Bedroom Apartment</option>
+                                <option value="penthouse">Penthouse Suite</option>
+                                <option value="general">General Information</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements or any questions you have..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/goba-peaks-logo-primary.jpeg" alt="Goba Peaks" class="footer-logo">
+                    <p class="footer-description">
+                        Your elevated address in Tanzania. Experience luxury living redefined with 
+                        unmatched comfort, elegance, and premium amenities in the heart of Dar es Salaam.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#apartments">Apartments</a></li>
+                            <li><a href="location.html">Location</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="booking.html">Book a Visit</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Residential Leasing</a></li>
+                            <li><a href="#">Property Management</a></li>
+                            <li><a href="#">Concierge Services</a></li>
+                            <li><a href="#">Corporate Housing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <div class="footer-contact">
+                            <p>
+                                <img src="images/icons/location-icon-white.svg" alt="Location">
+                                Goba Peaks Residences<br>
+                                Premium District, Dar es Salaam<br>
+                                Tanzania
+                            </p>
+                            <p>
+                                <img src="images/icons/phone-icon-white.svg" alt="Phone">
+                                +255 XXX XXX XXX
+                            </p>
+                            <p>
+                                <img src="images/icons/email-icon-white.svg" alt="Email">
+                                gobaseaks@whistlingwoods.co.tz
+                            </p>
+                        </div>
+                        
+                        <div class="footer-hours">
+                            <h5>Leasing Office Hours</h5>
+                            <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>
+                               Sunday: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Goba Peaks by Whistling Woods. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+                <div class="footer-tagline">
+                    "Living at the Peak" ✦ Your Elevated Address in Tanzania
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

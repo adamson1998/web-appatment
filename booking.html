@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Visit - Goba Peaks | Schedule Your Tour</title>
+    <meta name="description" content="Schedule a private tour of Goba Peaks. Book your visit and experience elevated living firsthand.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <style>
+        /* Hotel Cards Styles */
+        .hotels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .hotel-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vip-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #003b95;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            z-index: 10;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .favorite-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #e11d48;
+            stroke-width: 2;
+        }
+
+        .favorite-btn.active svg {
+            fill: #e11d48;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            z-index: 10;
+        }
+
+        .nav-btn:hover {
+            background: white;
+        }
+
+        .nav-btn.prev {
+            left: 12px;
+        }
+
+        .nav-btn.next {
+            right: 12px;
+        }
+
+        .reserve-btn {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #003b95;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease, background 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .card-image-container:hover .reserve-btn {
+            opacity: 1;
+        }
+
+        .reserve-btn:hover {
+            background: #002a6b;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .hotel-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .hotel-location {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .rating-badge {
+            background: #047857;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .rating-badge.exceptional {
+            background: #16a34a;
+        }
+
+        .rating-text {
+            font-size: 13px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .reviews-count {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .discount-badge.black-friday {
+            background: #1a1a1a;
+        }
+
+        .pricing {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .current-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .original-price {
+            font-size: 16px;
+            color: #666;
+            text-decoration: line-through;
+        }
+
+        .price-details {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/goba-peaks-logo-secondary.png" alt="Goba Peaks Logo" class="logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#apartments" class="nav-link">Apartments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="location.html" class="nav-link">Location</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="booking.html" class="nav-link cta-button active">Book Now</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-background">
+            <img src="images/gallery/modern-living-1.jpg" alt="Book Your Visit" class="page-header-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="page-header-content">
+            <h1 class="page-title">Available Apartments</h1>
+            <p class="page-subtitle">Find Your Perfect Home at Goba Peaks</p>
+        </div>
+    </section>
+
+    <!-- Hotel Cards Section -->
+    <section class="booking-section">
+        <div class="container">
+            <!-- Introduction -->
+            <div class="booking-intro">
+                <h2 class="section-title center">Featured Apartments</h2>
+                <p class="section-description center">
+                    Explore our collection of luxury apartments. Each unit is designed with your comfort 
+                    and lifestyle in mind, featuring modern amenities and stunning views.
+                </p>
+            </div>
+
+            <!-- Hotel Cards Grid -->
+            <div class="hotels-grid">
+                <!-- Card 1 -->
+                <div class="hotel-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Urban Studio Suite" class="card-image">
+                        <div class="vip-badge">VIP Access</div>
+                        <button class="favorite-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                        <button class="nav-btn prev">‹</button>
+                        <button class="nav-btn next">›</button>
+                        <button class="reserve-btn">Reserve Now</button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="hotel-name">Urban Studio Suite</h3>
+                        <p class="hotel-location">Goba Peaks, Dar es Salaam</p>
+                        <div class="rating-container">
+                            <span class="rating-badge">8.9</span>
+                            <span class="rating-text">Excellent</span>
+                            <span class="reviews-count">(45 reviews)</span>
+                        </div>
+                        <div class="discount-badge">35% off</div>
+                        <div class="pricing">
+                            <span class="current-price">$850</span>
+                            <span class="original-price">$1,300</span>
+                        </div>
+                        <div class="price-details">
+                            per month<br>
+                            2 beds • 1 bath<br>
+                            450 sq ft
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="hotel-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&h=400&fit=crop" alt="Family Apartment" class="card-image">
+                        <div class="vip-badge">VIP Access</div>
+                        <button class="favorite-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                        <button class="nav-btn prev">‹</button>
+                        <button class="nav-btn next">›</button>
+                        <button class="reserve-btn">Reserve Now</button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="hotel-name">Family Apartment</h3>
+                        <p class="hotel-location">Goba Peaks, Dar es Salaam</p>
+                        <div class="rating-container">
+                            <span class="rating-badge">9.1</span>
+                            <span class="rating-text">Excellent</span>
+                            <span class="reviews-count">(62 reviews)</span>
+                        </div>
+                        <div class="discount-badge black-friday">Limited Offer 40% off</div>
+                        <div class="pricing">
+                            <span class="current-price">$1,200</span>
+                            <span class="original-price">$2,000</span>
+                        </div>
+                        <div class="price-details">
+                            per month<br>
+                            3 beds • 2 baths<br>
+                            850 sq ft
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="hotel-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Deluxe Suite" class="card-image">
+                        <div class="vip-badge">VIP Access</div>
+                        <button class="favorite-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                        <button class="nav-btn prev">‹</button>
+                        <button class="nav-btn next">›</button>
+                        <button class="reserve-btn">Reserve Now</button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="hotel-name">Deluxe Suite</h3>
+                        <p class="hotel-location">Goba Peaks, Dar es Salaam</p>
+                        <div class="rating-container">
+                            <span class="rating-badge">9.3</span>
+                            <span class="rating-text">Superb</span>
+                            <span class="reviews-count">(78 reviews)</span>
+                        </div>
+                        <div class="discount-badge">30% off</div>
+                        <div class="pricing">
+                            <span class="current-price">$1,750</span>
+                            <span class="original-price">$2,500</span>
+                        </div>
+                        <div class="price-details">
+                            per month<br>
+                            3 beds • 2.5 baths<br>
+                            1,100 sq ft
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="hotel-card">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Luxury Penthouse" class="card-image">
+                        <div class="vip-badge">VIP Access</div>
+                        <button class="favorite-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                        <button class="nav-btn prev">‹</button>
+                        <button class="nav-btn next">›</button>
+                        <button class="reserve-btn">Reserve Now</button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="hotel-name">Luxury Penthouse</h3>
+                        <p class="hotel-location">Goba Peaks, Dar es Salaam</p>
+                        <div class="rating-container">
+                            <span class="rating-badge exceptional">9.7</span>
+                            <span class="rating-text">Exceptional</span>
+                            <span class="reviews-count">(92 reviews)</span>
+                        </div>
+                        <div class="discount-badge black-friday">Exclusive 45% off</div>
+                        <div class="pricing">
+                            <span class="current-price">$2,750</span>
+                            <span class="original-price">$5,000</span>
+                        </div>
+                        <div class="price-details">
+                            per month<br>
+                            4 beds • 3 baths<br>
+                            1,800 sq ft
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/goba-peaks-logo-secondary.png" alt="Goba Peaks" class="footer-logo">
+                    <p class="footer-description">
+                        Elevated living in the heart of Dar es Salaam. Experience luxury, comfort, and sophistication at Goba Peaks.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <div class="social-icon facebook-icon"></div>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <div class="social-icon instagram-icon"></div>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <div class="social-icon twitter-icon"></div>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <div class="social-icon linkedin-icon"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#apartments">Apartments</a></li>
+                        <li><a href="location.html">Location</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📍 Dar es Salaam, Tanzania</li>
+                        <li>📞 +255 XXX XXX XXX</li>
+                        <li>✉️ info@gobapeaks.co.tz</li>
+                        <li>🕐 Mon - Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-newsletter-text">Subscribe for updates and exclusive offers</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Goba Peaks by Whistling Woods. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // Add click functionality to favorite buttons
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                btn.classList.toggle('active');
+            });
+        });
+
+        // Navigation buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                console.log('Navigate to', btn.classList.contains('prev') ? 'previous' : 'next', 'image');
+            });
+        });
+
+        // Reserve buttons
+        document.querySelectorAll('.reserve-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                alert('Redirecting to reservation page...');
+            });
+        });
+    </script>
+</body>
+</html>
