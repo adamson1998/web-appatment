@@ -5,9 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initializeNavigation();
     initializeGallery();
+    initializeHeroSlider();
+    initializeMiniSliders();
     initializeForms();
     initializeAnimations();
     initializeScrollEffects();
+    // Ensure active navigation state is correct on load (and hide gallery link if needed)
+    updateActiveNavigation();
+    // Also handle URL hash scenario (e.g., direct link to #apartments)
+    if (window.location.hash === '#apartments') {
+        const galleryNavLink = document.querySelector('.nav-link[href="#gallery"]');
+        if (galleryNavLink) galleryNavLink.style.display = 'none';
+    }
 });
 
 // Navigation functionality
@@ -83,6 +92,9 @@ function initializeGallery() {
                     item.style.display = 'none';
                 }
             });
+
+            // Update the featured images on the gallery panel to match the selected category
+            updateGalleryFeatured(category);
         });
     });
 
@@ -95,6 +107,62 @@ function initializeGallery() {
         item.addEventListener('mouseleave', function() {
             this.style.transform = 'scale(1)';
         });
+    });
+
+    // Initialize featured preview to the currently active tab (or 'all')
+    const activeTab = document.querySelector('.gallery-tab.active');
+    const initCategory = activeTab ? activeTab.getAttribute('data-category') : 'all';
+    updateGalleryFeatured(initCategory);
+}
+
+// Update the gallery featured images (the preview panel) to show representative images
+function updateGalleryFeatured(category) {
+    const galleryImagesContainer = document.querySelector('.gallery-images');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    if (!galleryImagesContainer || galleryItems.length === 0) return;
+
+    // Find up to two items that match the category (or take any if 'all')
+    const matches = galleryItems.filter(item => {
+        const itemCategory = item.getAttribute('data-category');
+        return category === 'all' || itemCategory === category;
+    });
+
+    // If no matches, fall back to first two items
+    const sources = (matches.length ? matches : galleryItems).slice(0, 2).map(i => {
+        const img = i.querySelector('img');
+        return img ? img.src : null;
+    }).filter(Boolean);
+
+    const imgs = galleryImagesContainer.querySelectorAll('img');
+    imgs.forEach((imgEl, idx) => {
+        if (sources[idx]) imgEl.src = sources[idx];
+    });
+}
+
+// Simple hero slider: cycles .hero-slide elements
+function initializeHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (!slides || slides.length <= 1) return;
+    let current = 0;
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 5000); // change every 5s
+}
+
+// Mini sliders (used on About page): rotate images inside .mini-slider
+function initializeMiniSliders() {
+    const sliders = document.querySelectorAll('.mini-slider');
+    sliders.forEach(slider => {
+        const slides = slider.querySelectorAll('.mini-slide');
+        if (slides.length <= 1) return;
+        let idx = 0;
+        setInterval(() => {
+            slides[idx].classList.remove('active');
+            idx = (idx + 1) % slides.length;
+            slides[idx].classList.add('active');
+        }, 4000);
     });
 }
 
@@ -387,6 +455,15 @@ function updateActiveNavigation() {
             link.classList.add('active');
         }
     });
+    // Hide the Gallery nav link when viewing the Apartments section specifically
+    const galleryNavLink = document.querySelector('.nav-link[href="#gallery"]');
+    if (galleryNavLink) {
+        if (currentSection === 'apartments') {
+            galleryNavLink.style.display = 'none';
+        } else {
+            galleryNavLink.style.display = '';
+        }
+    }
 }
 
 // Utility functions
